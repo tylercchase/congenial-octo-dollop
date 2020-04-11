@@ -1,4 +1,8 @@
-extends Area2D
+extends KinematicBody2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 signal hit
 
@@ -28,9 +32,7 @@ func _process(delta):
         $AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	move_and_collide(velocity * delta)
 	if velocity.x != 0:
 		$AnimatedSprite.animation = "right"
 		$AnimatedSprite.flip_v = false

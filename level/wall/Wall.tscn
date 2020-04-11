@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://imgs/wall.jpg" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Wall" type="Node2D"]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Wall"]
+scale = Vector2( 0.0812653, 0.0812653 )
+texture = ExtResource( 1 )
