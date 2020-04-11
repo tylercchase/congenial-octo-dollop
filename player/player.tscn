@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://imgs/smr2_rt1.png" type="Texture" id=2]
+[ext_resource path="res://imgs/smr2_rt2.png" type="Texture" id=3]
+[ext_resource path="res://imgs/smr2_bk1.png" type="Texture" id=4]
+[ext_resource path="res://imgs/smr2_bk2.png" type="Texture" id=5]
+[ext_resource path="res://imgs/smr2_fr1.png" type="Texture" id=6]
+[ext_resource path="res://imgs/smr2_fr2.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.97818, 84.9585 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 204.234, 104.515 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 19.9724, 18.9079 )
+scale = Vector2( 2.53198, -0.229371 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 19.8661, 18.7835 )
+scale = Vector2( 1.21946, 1.1887 )
+frames = SubResource( 2 )
+animation = "down"
+[connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
