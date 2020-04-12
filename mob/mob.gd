@@ -1,12 +1,12 @@
-extends RigidBody2D
+extends StaticBody2D
 
+var Fireball = preload("res://mob/mobFireball.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var health = 30
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var follow = PathFollow2D.new()
 	pass # Replace with function body.
 
 
@@ -14,15 +14,28 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func shoot():
-	var dir = get_parent().get_parent().get_node(".").global_position - global_position
-
+func shoot(target):
+	var dir = target.global_position - global_position
+	var b = Fireball.instance()
+	b.setSpeed(500)
+	b.start($AnimatedSprite.global_position, dir.angle())
+	get_parent().add_child(b)
+	pass
+	
 func _on_startShooting():
 	print("ASDASD")
 	pass
 
 func hit():
+	health -= 10
+	if health <= 0:
+		get_parent().remove_child(self)
 	print("I'm HIT")
 
-func _on_Area2D_area_entered(area):
+
+
+func _on_AgroRange_body_entered(body):
+	print(body.global_position)
+	print("YOP")
+	shoot(body)
 	pass # Replace with function body.

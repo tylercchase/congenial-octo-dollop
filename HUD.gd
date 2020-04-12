@@ -15,5 +15,10 @@ func _ready():
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	$MenuScreen.hide()
-	print("HEY")
 	emit_signal("start_game")
+
+func _on_Player_hit():
+	$MenuScreen.show()
+	$StartButton.hide()
+	
+	pass # Replace with function body.

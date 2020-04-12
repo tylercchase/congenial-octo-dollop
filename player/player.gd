@@ -51,7 +51,11 @@ func _process(delta):
 
 
 func _on_Player_body_entered(body):
-	print(body.get_name())
+	hide()
+	emit_signal("hit")
+	$hitbox.set_deferred("disabled",true)
+
+func hit():
 	hide()
 	emit_signal("hit")
 	$hitbox.set_deferred("disabled",true)

@@ -19,10 +19,7 @@ func new_game():
 func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
     # use global coordinates, not local to node
-	var result = space_state.intersect_ray($Player.global_position, $Level/Mob.global_position, [self],$Level/TileMap.collision_mask)
-	if $Player.global_position.distance_to($Level/Mob.global_position) < 250:
-			emit_signal("startShooting")
-			print("CLOSE")
+	
 	#if result:
 		#print("Hit at point: ", result.position)
 		
