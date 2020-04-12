@@ -1,22 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://imgs/title.png" type="Texture" id=2]
 [ext_resource path="res://assets/BarlowSemiCondensed-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://imgs/win.png" type="Texture" id=4]
+[ext_resource path="res://imgs/lose.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+bg_color = Color( 0.815686, 0.192157, 0.192157, 0 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.815686, 0.192157, 0.192157, 0 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=5]
 Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -24,12 +26,12 @@ Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 3 )
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=6]
 size = 64
 font_data = ExtResource( 3 )
 
@@ -58,6 +60,18 @@ rect_scale = Vector2( 0.90448, 0.689889 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-theme = SubResource( 2 )
-custom_fonts/font = SubResource( 1 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+
+[node name="winScreen" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="loseScreen" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

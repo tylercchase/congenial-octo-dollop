@@ -23,3 +23,4 @@ current = true
 [node name="Level" parent="." instance=ExtResource( 4 )]
 [connection signal="hit" from="Player" to="HUD" method="_on_Player_hit"]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
+[connection signal="win" from="Level" to="HUD" method="_on_Level_win"]
