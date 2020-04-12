@@ -13,7 +13,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func new_game():
-	$Player.start($StartPosition.position)
+	$Player.start($Level/PlayerStart.position)
 	$Level.show()
 
 func _on_HUD_start_game():

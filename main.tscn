@@ -9,19 +9,15 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 510.988, 301.468 )
+position = Vector2( 1.50726, 1.50735 )
 scale = Vector2( 0.540323, 0.50151 )
 z_index = 6
-rotating = true
+anchor_mode = 0
 current = true
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
-
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 78.8669, 49.056 )
 
 [node name="Level" parent="." instance=ExtResource( 4 )]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
