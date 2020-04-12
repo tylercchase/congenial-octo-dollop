@@ -22,7 +22,6 @@ func shoot(target):
 	get_parent().add_child(b)
 	pass
 	
-func _on_startShooting():
 	print("ASDASD")
 	pass
 
@@ -30,7 +29,7 @@ func hit():
 	health -= 10
 	if health <= 0:
 		get_parent().remove_child(self)
-	print("I'm HIT")
+	
 
 
 

@@ -6,7 +6,7 @@ extends KinematicBody2D
 var Fireball = preload("res://player/fireball.tscn")
 
 signal hit
-
+var counter = 1
 export var speed = 400
 var screen_size
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +30,10 @@ func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	if Input.is_action_just_pressed("click"):
-		shoot()
+		if counter == 0:
+			shoot()
+		else:
+			counter -= 1
 	if velocity.length() > 0:
         velocity = velocity.normalized() * speed
         $AnimatedSprite.play()
