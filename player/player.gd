@@ -18,6 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2()
+
+
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 		pass
@@ -50,13 +52,9 @@ func _process(delta):
 
 func _on_Player_body_entered(body):
 	print(body.get_name())
-	print("ASD")
-	if body.get_name() == "Wall":
-		pass
-	else:
-		hide()
-		emit_signal("hit")
-		$hitbox.set_deferred("disabled",true)
+	hide()
+	emit_signal("hit")
+	$hitbox.set_deferred("disabled",true)
 	
 func start(pos):
 	position = pos
@@ -64,6 +62,7 @@ func start(pos):
 	
 func shoot():
     # "Muzzle" is a Position2D placed at the barrel of the gun.
+	var dir = get_global_mouse_position() - global_position
 	var b = Fireball.instance()
-	b.start($Wand.global_position, rotation)
+	b.start($Wand.global_position, dir.angle())
 	get_parent().add_child(b)
