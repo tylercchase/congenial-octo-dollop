@@ -8,6 +8,7 @@ var Fireball = preload("res://player/fireball.tscn")
 signal hit
 var counter = 1
 export var speed = 400
+var health = 2
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,9 +62,12 @@ func _on_Player_body_entered(body):
 	$hitbox.set_deferred("disabled",true)
 
 func hit():
-	hide()
-	emit_signal("hit")
-	$hitbox.set_deferred("disabled",true)
+	if health == 0:
+		hide()
+		emit_signal("hit")
+		$hitbox.set_deferred("disabled",true)
+	else:
+		health -= 1
 	
 func start(pos):
 	position = pos
